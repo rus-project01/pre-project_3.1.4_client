@@ -43,99 +43,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!--    <script type="text/javascript">-->
-<!--            // $('.buttonForDelete').click(function(we) {-->
-<!--            //     we.preventDefault();-->
-<!--            //     deleteUser();-->
-<!--            // });-->
-<!--            // $(document).ready(function () {-->
-<!--            //     $("form.buttonForDelete").click(function () {-->
-<!--            //         deleteUser();-->
-<!--            //     });-->
-<!--                // function deleteUser(ev) {-->
-<!--                    // var deleteForm = {-->
-<!--                    // var id = $("#id_delete").val();-->
-<!--                    // var idd = $(this).attr('#id_delete');-->
-<!--                    //     id : $("#id_delete").val()-->
-<!--                    // name : $("#name_delete").val(),-->
-<!--                    // street : $("#street_delete").val(),-->
-<!--                    // password : $("#password_delete").val(),-->
-<!--                    // age : $("#deletAge").val(),-->
-<!--                    // role : $("#role_del").val()-->
-<!--                    // }-->
-<!--                    // $.ajax({-->
-<!--                    //     type: "post",-->
-<!--                    //     url: "/admin/deleted",-->
-<!--                    //     contentType: "application/json",-->
-<!--                    //     dataType: 'text',-->
-<!--                    //     data: JSON.stringify(id),-->
-<!--                    //     success: function (e) {-->
-<!--                    //         alert(idd + " GOOD");-->
-<!--                    //         // alert("gotovo " + id);-->
-<!--                    //         // alert($(this).attr(id));-->
-<!--                    //         // alert("User was deleted from database" );-->
-<!--                    //     },-->
-<!--                    //     error: function (s) {-->
-<!--                    //         alert(idd + " BAD");-->
-<!--                    //     },-->
-<!--                    // });-->
-
-<!--    // </script>-->
     <script type="text/javascript">
-        $(document).ready(function () { // ttyyyyyyyyyyyyyyyyyyyyyyyyyyyyt
-
-                // alert("etap1");
-                // var editForm = {
-                //     id : $(".tab-content .myEdit input[name='id']").val(),
-                //     // name : $(".tab-content input[name='name']").val(),
-                //     // age : $(".tab-content input[name='age']").val(),
-                //     // street : $(".tab-content input[name='street']").val(),
-                //     // role : $(".tab-content input[name='role']").val()
-                //
-                // };
-            // $(function() {
-            //     $('#editButFor').click(function () {
-            //         alert("OK");
-            //         $('#editMod').modal('show');
-            //     });
-
+        $(document).ready(function () {
                 $(".tab-content #edit_but").on('click', function (event) {
-
                     event.preventDefault();
-                    // var editForm = {
-                    //     id : $(".tab-content .myEdit input[name='id']").val(),
-                    //     // name : $(".tab-content input[name='name']").val(),
-                    //     // age : $(".tab-content input[name='age']").val(),
-                    //     // street : $(".tab-content input[name='street']").val(),
-                    //     // role : $(".tab-content input[name='role']").val()
-                    // };
-                    // var j = $(this).parents('.nameForEdit').attr('value');
-                    // var newEditForm = {
-                    //     name: $(this).attr('value'),
-                    //     // name : $(this).parents('.fieldset').val('style'),
-                    //     // age : $(this).attr('value'),
-                    //     // age : $(".tab-content .myEdit input[name='age']").val(),
-                    //     // street : j,
-                    //     // password : $('.tab-content .passForEdit').attr('value'),
-                    //     // role : $('.tab-content .roleForEdit').attr('value')
-                    // };
-                    // var ss = $('.tab-content').find('td:eq(0)').text()
                     var newEditForm = {
-                        // name: $(this).closest(".nameForEdit input[name='name']").val(),
-                        // street: $(this).closest(".idForEdit").attr('value'),
-                        // age: $(this).closest(".ageForEdit").val()
-                        // name : 	$(".tab-content #editButFor").data("toggle")
                         name : $(this).closest('fieldset').find("input[name='name']").val(),
                         id : $(this).closest('fieldset').find("input[name='id']").val(),
                         street : $(this).closest('fieldset').find("input[name='street']").val(),
                         age : $(this).closest('fieldset').find("input[name='age']").val(),
                         role : $(this).closest('fieldset').find("input[name='role']").val(),
                         password : $(this).closest('fieldset').find("input[name='password']").val(),
-                        // street: $(this).parent(".idForEdit input[name='name']").val(),
                     };
-                    // $.post("/admin/editUser", function (e) {
-                    //     $('#id_edit_form').val(e.id);
-                    // })
                     $.ajax({
                         type: "POST",
                         url: "/admin/editUser",
@@ -145,40 +64,19 @@
                         success: function (e) {
                             console.log(newEditForm);
                             window.location.href = "/admin/";
-                            // alert("User was edited in database " + e);
                         },
                         error: function (e) {
                             console.log(newEditForm);
                             window.location.href = "/admin/";
-                            // alert("Error in Edit " + e);
                         },
                     })
-                // });
             });
-
             $(".tab-content #delete_but").on('click', function (event) {
                 event.preventDefault();
-
-
-                // var ss = $(".buttonForDelete input[name='id']").val();
-                // var nyy = $(".buttonForDelete .id").attr("value", this.id);
-                //
-                // // var id = $('.tab-content .classIdDel').val();
-                // var optionTexts = []; //раб.варик
-                // $.each($('.tab-content #id_delete'), function() {
-                //     optionTexts.push($(this).val())
-                // });
-                // $(".tab-content #getButIdForPost").on( "click", function() {
-                //     var id = $(this).attr('value');
                 var delForm = {
-                    id: $(this).attr('value')
+                    id : $(this).closest('fieldset').find("input[name='id']").val(),
+                    // id: $(this).attr('value')
                 };
-                // });
-                // var qe = ($('.tab-content #callDeletePost').attr('value'));
-                // var value = $(this).text();
-                // var ewq = $(".tab-content #id_delete input[name='id']").val(value);
-                // var optionTexts = [];
-                // $("table td button #callDeletePost").each(function() { optionTexts.push($(this).text()) });
                 $.ajax({
                     type: "POST",
                     url: "/admin/deleted",
@@ -195,7 +93,7 @@
                     },
                 })
             });
-           
+
             $("#callJSc").submit(function (event) {
                 event.preventDefault();
                 var addForm = {
@@ -220,6 +118,81 @@
                     },
                 })
             });
+            $.ajax({
+                type: "get",
+                url: "/admin/getUsers",
+                contentType: "application/json",
+                dataType: 'json',
+                success: function (e) {
+                    var tbody = $('.tab-content .adminpage');
+                    $.each(e, function (i, w) {
+                        var page;
+                        page += '<tr>';
+                        page += '<td>' + w.id + '</td>';
+                        page += '<td>' + w.name + '</td>';
+                        page += '<td>' + w.street + '</td>';
+                        page += '<td>' + w.age + '</td>';
+                        page += '<td>' + w.role[0].name + '</td>';
+                        page += '<td>';
+                        page += '<button type="button" id="editButFor" class="bubu btn btn-info btn-lg btn-sm" data-toggle="modal" data-target="#editMod">Edit</button>';
+                        page += '</td>';
+                        page += '<td>';
+                        page += '<button id="callDeletePost" type="button" class="getIdinBut btn btn-danger btn-lg btn-sm" data-toggle="modal" data-target="#deleteMod">Delete</button>';
+                        page += ' </td>';
+                        tbody.append(page);
+                    });
+                    console.log(e);
+                },
+                error: function (e) {
+                    alert("bad");
+                    console.log(e);
+                },
+            });
+            $(function() {
+                var findUs = {
+                    id : $('#callJs').find("input[name='name']").val(),
+                };
+                $.ajax({
+                    type: "post",
+                    url: "/admin/findUser",
+                    contentType: "application/json",
+                    dataType: 'text',
+                    data: JSON.stringify(findUs),
+                    success: function (e) {
+                        var bbody = $('.tab-content .userpage');
+                        var page;
+                        page += '<tr>';
+                        page += '<td>' + e.id + '</td>';
+                        page += '<td>' + e.name + '</td>';
+                        page += '<td>' + e.street + '</td>';
+                        page += '<td>' + e.age + '</td>';
+                        page += '<td>' + e.role[0].name + '</td>';
+                        page += '<tr>';
+                        bbody.append(page);
+                        console.log(e);
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    },
+                });
+            });
+            $(document).on('click', '.bubu', function (e) {
+                e.preventDefault();
+                $('.tab-content #id_edit_form').val($(this).closest('tr').find('td:eq(0)').text());
+                $('.tab-content #name').val($(this).closest('tr').find('td:eq(1)').text());
+                $('.tab-content #street').val($(this).closest('tr').find('td:eq(2)').text());
+                $('.tab-content #vozrast').val($(this).closest('tr').find('td:eq(3)').text());
+                $('.tab-content #role').val($(this).closest('tr').find('td:eq(4)').text());
+            });
+
+            $(document).on('click', '.getIdinBut', function (e) {
+                e.preventDefault();
+                $('.tab-content #id_delete').val($(this).closest('tr').find('td:eq(0)').text());
+                $('.tab-content #name_delete').val($(this).closest('tr').find('td:eq(1)').text());
+                $('.tab-content #street_delete').val($(this).closest('tr').find('td:eq(2)').text());
+                $('.tab-content #deletAge').val($(this).closest('tr').find('td:eq(3)').text());
+                $('.tab-content #role_del').val($(this).closest('tr').find('td:eq(4)').text());
+            });
         })
     </script>
 </head>
@@ -229,7 +202,6 @@
     <ul class = "navbar-nav ml-auto" ></ul>
     <ul class="navbar-nav ml-auto" th:inline="text">
         <a class="nav-link" href="/login/logout" style="margin-left:80%">Logout</a>
-        <a class="nav-link" style="position: absolute; left:0%; color:white"> [[${enter.name}]] with roles: [[${enter.role.get(0).name}]]</a>
     </ul>
 </nav>
 <div id="results" class="container mt-3" >
@@ -256,7 +228,7 @@
                         <strong><div class="card-header" style="width: 100%">All users</div></strong>
                         <div class="card-body">
                             <div class="container">
-                                <table class="tablik table table-striped" id="new-projects">
+                                <table class="adminpage tablik table table-striped" id="new-projects">
                                     <thead>
                                     <tr>
                                         <th>Id</th>
@@ -269,17 +241,8 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="users, userStat : ${listPersons}">
-                                        <td th:text="${users.id}"></td>
-                                        <td th:text="${users.name}"></td>
-                                        <td th:text="${users.street}"></td>
-                                        <td th:text="${users.age}"></td>
-                                        <td th:text="${users.role.get(0).name}"></td>
-                                        <td>
-                                            <button type="button" id="editButFor" class="btn btn-info btn-lg btn-sm" data-toggle="modal" data-target="#editMod" data- th:attrappend="data-target=${users.id}">Edit</button>
-                                        </td>
 <!--                                        data-toggle="modal" data-target="#editMod" th:attrappend="data-target=${users.id}"-->
-                                        <div class="modal fade" id="editMod" role="dialog" th:attrappend="id=${users.id}">
+                                        <div class="editF modal fade" id="editMod" role="dialog" >
 <!--                                            th:attrappend="id=${users.id}"-->
                                             <div class="modal-dialog">
                                                 <!-- Modal content-->
@@ -294,8 +257,9 @@
                                                                 <div class="form-group">
                                                                     <strong><label class="col-md-4 control-label" for="id_edit_form">ID</label></strong>
                                                                     <div class="col-md-6 offset-3">
-                                                                        <input id="id_edit_form" path="id" name="id" readonly="readonly" placeholder="id" class="idForEdit form-control input-md" th:value="${users.id}"/>
+                                                                        <input id="id_edit_form" path="id" name="id" readonly="readonly" placeholder="id" class="idForEdit form-control input-md" />
                                                                         <!--                                                <span th:if="${existRoll !=null}" style="color:Red;"> Already Exist !</span>-->
+<!--                                                                        th:value="${users.id}"-->
                                                                     </div>
                                                                 </div>
 
@@ -303,7 +267,8 @@
                                                                 <div class="www form-group">
                                                                     <strong><label class="col-md-4 control-label" for="name">Name</label></strong>
                                                                     <div class="col-md-6 offset-3">
-                                                                        <input id="name" path="name" name="name" type="text" placeholder="name" class="nameForEdit form-control input-md" th:value="${users.name}"/>
+                                                                        <input id="name" path="name" name="name" type="text" placeholder="name" class="nameForEdit form-control input-md" />
+<!--                                                                        th:value="${users.name}"-->
                                                                     </div>
                                                                 </div>
 
@@ -311,7 +276,8 @@
                                                                 <div class="form-group">
                                                                     <strong><label class="col-md-4 control-label" for="street">Street</label></strong>
                                                                     <div class="col-md-6 offset-3">
-                                                                        <input id="street" path="street" name="street" type="text" placeholder="street" class="streetForEdit form-control input-md" th:value="${users.street}"/>
+                                                                        <input id="street" path="street" name="street" type="text" placeholder="street" class="streetForEdit form-control input-md" />
+<!--                                                                        th:value="${users.street}"-->
                                                                     </div>
                                                                 </div>
 
@@ -319,7 +285,8 @@
                                                                 <div class="form-group">
                                                                     <strong><label class="col-md-4 control-label" for="vozrast">Age</label></strong>
                                                                     <div class="col-md-6 offset-3">
-                                                                        <input type="number" id="vozrast" path="age" name="age" min="0" max="110" step="1" placeholder="age" class="ageForEdit form-control input-md" th:value="${users.age}"/>
+                                                                        <input type="number" id="vozrast" path="age" name="age" min="0" max="110" step="1" placeholder="age" class="ageForEdit form-control input-md" />
+<!--                                                                        th:value="${users.age}"-->
                                                                     </div>
                                                                 </div>
 
@@ -328,7 +295,8 @@
                                                                 <div class="form-group">
                                                                     <strong><label class="col-md-4 control-label" for="password">Password</label></strong>
                                                                     <div class="col-md-6 offset-md-3">
-                                                                        <input id="password" path="password" name="password" type="password" placeholder="password" class="passForEdit form-control input-md" th:value="${users.password}"/>
+                                                                        <input id="password" path="password" name="password" type="password" placeholder="password" class="passForEdit form-control input-md" />
+<!--                                                                        th:value="${users.password}"-->
                                                                     </div>
                                                                 </div>
 
@@ -346,7 +314,8 @@
                                                                     <label class="col-md-4 control-label" for="edit_but"></label>
                                                                     <div class="col-md-4">
                                                                         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                                                                        <button id="edit_but" th:value="${users.id}"  name="edit" class="btn btn-primary btn-sm text-white">Edit</button>
+                                                                        <button id="edit_but"   name="edit" class="btn btn-primary btn-sm text-white">Edit</button>
+<!--                                                                        th:value="${users.id}"-->
                                                                     </div>
                                                                 </div>
                                                             </fieldset>
@@ -355,10 +324,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <td>
-                                            <button id="callDeletePost" type="button" class="getIdinBut btn btn-danger btn-lg btn-sm" data-toggle="modal" data-target="#deleteMod" th:value="${users.id}"  th:attrappend="data-target=${users.id}">Delete</button>
-                                        </td>
-                                        <div class="modal fade" role="dialog" id="deleteMod" th:attrappend="id=${users.id}">
+                                        <div class="modal fade" role="dialog" id="deleteMod">
                                             <div class="modal-dialog">
 
                                                 <!-- Modal content-->
@@ -374,7 +340,8 @@
                                                                 <div class="form-group">
                                                                     <strong><label class="col-md-4 control-label" for="id_delete">ID</label></strong>
                                                                     <div class="col-md-6 offset-3">
-                                                                        <input id="id_delete" path="id" name="id" readonly="readonly" autofocus="autofocus" placeholder="id_delete" class="idshik classIdDel form-control input-md " required th:value="${users.id}"/>
+                                                                        <input id="id_delete" path="id" name="id" readonly="readonly" autofocus="autofocus" placeholder="id_delete" class="idshik classIdDel form-control input-md " required />
+<!--                                                                        th:value="${users.id}"-->
                                                                         <!--                                                <span th:if="${existRoll !=null}" style="color:Red;"> Already Exist !</span>-->
                                                                     </div>
                                                                 </div>
@@ -383,7 +350,8 @@
                                                                 <div class="form-group">
                                                                     <strong><label class="col-md-4 control-label" for="name">Name</label></strong>
                                                                     <div class="col-md-6 offset-3">
-                                                                        <input id="name_delete" path="name" name="name" readonly="readonly" type="text" placeholder="name" class="form-control input-md " th:value="${users.name}"/>
+                                                                        <input id="name_delete" path="name" name="name" readonly="readonly" type="text" placeholder="name" class="form-control input-md " />
+<!--                                                                        th:value="${users.name}"-->
                                                                     </div>
                                                                 </div>
 
@@ -391,7 +359,8 @@
                                                                 <div class="form-group">
                                                                     <strong><label class="col-md-4 control-label" for="street">Street</label></strong>
                                                                     <div class="col-md-6 offset-3">
-                                                                        <input id="street_delete" path="street" name="street" readonly="readonly" type="text" placeholder="street" class="form-control input-md modal-dialog-centered" th:value="${users.street}"/>
+                                                                        <input id="street_delete" path="street" name="street" readonly="readonly" type="text" placeholder="street" class="form-control input-md modal-dialog-centered"/>
+<!--                                                                        th:value="${users.street}"-->
                                                                     </div>
                                                                 </div>
 
@@ -399,7 +368,8 @@
                                                                 <div class="form-group" >
                                                                     <strong><label class="col-md-4 control-label" for="deletAge">Age</label></strong>
                                                                     <div class="col-md-6 offset-3">
-                                                                        <input id="deletAge" path="age" name="age" readonly="readonly" type="text" placeholder="age" class="form-control input-md center" th:value="${users.age}"/>
+                                                                        <input id="deletAge" path="age" name="age" readonly="readonly" type="text" placeholder="age" class="form-control input-md center" />
+<!--                                                                        th:value="${users.age}"-->
                                                                     </div>
                                                                 </div>
 
@@ -407,14 +377,16 @@
                                                                 <!-- Text input-->
                                                                 <div class="form-group">
                                                                     <div class="col-md-6 offset-3">
-                                                                        <input id="password_delete" path="password" name="password" type="hidden" placeholder="password" class="form-control input-md" th:value="${users.password}"/>
+                                                                        <input id="password_delete" path="password" name="password" type="hidden" placeholder="password" class="form-control input-md" />
+<!--                                                                        th:value="${users.password}"-->
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group col-md-6 offset-3">
                                                                     <strong><label class="col-md-4 control-label" for="role_del">Role</label></strong>
                                                                     <select multiple class="form-control btn-sm" readonly="readonly" id="role_del" name="role">
-                                                                        <option th:text="${users.role.get(0).name}"></option>
+<!--                                                                        <option th:text="${users.role.get(0).name}"></option>-->
+                                                                        <option th:value="ROLE_admin" th:text="Admin"></option>
                                                                     </select>
                                                                 </div>
 
@@ -423,7 +395,8 @@
                                                                     <label class="col-md-4 control-label" for="delete_but"></label>
                                                                     <div class="col-md-4">
                                                                         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                                                                        <button class="getButIdForPost btn btn-danger btn-sm text-white" id="delete_but" name="delete" th:value="${users.id}" th:attrappend="data-target=${userk.id}">Delete</button>
+                                                                        <button class="getButIdForPost btn btn-danger btn-sm text-white" id="delete_but" name="delete" >Delete</button>
+<!--                                                                        th:value="${users.id}" th:attrappend="data-target=${userk.id}"-->
 <!--                                                                        onclick="deleteUser()"-->
                                                                     </div>
                                                                 </div>
@@ -433,7 +406,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </tr>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -442,12 +415,14 @@
                 </div>
                 <div id="menu1" class="container tab-pane fade"><br>
                     <div class="card" style="width: 100%; margin-top:-25px; margin-left:-20px">
-                        <form id="callJSc" class="form-horizontal" th:object="${userk}" method="post">
+                        <form id="callJSc" class="form-horizontal"  method="post">
+<!--                            th:object="${userk}"-->
                             <strong><div class="card-header" >Add new user</div></strong>
                             <div class="card-body">
                                 <div class="form-group">
                                     <div class="col-md-3 offset-5">
-                                        <input hidden id="id_create" path="id" name="id" class="form-control input-md" th:value="${userk.id}"/>
+                                        <input hidden id="id_create" path="id" name="id" class="form-control input-md" />
+<!--                                        th:value="${userk.id}"-->
                                         <!--                                                <span th:if="${existRoll !=null}" style="color:Red;"> Already Exist !</span>-->
                                     </div>
                                 </div>
@@ -456,7 +431,8 @@
                                 <div class="form-group">
                                     <strong><label class="mx-auto" style="float:right; width:50%;"  for="name">Name</label></strong>
                                     <div class="col-md-3 offset-5">
-                                        <input id="name_create" path="name" name="name" type="text" placeholder="name" class="form-control input-md" th:value="${userk.name}"/>
+                                        <input id="name_create" path="name" name="name" type="text" placeholder="name" class="form-control input-md"/>
+<!--                                        th:value="${userk.name}"-->
                                     </div>
                                 </div>
 
@@ -464,7 +440,8 @@
                                 <div class="form-group">
                                     <strong><label class="mx-auto" style="float:right; width:50%;" for="street">Street</label></strong>
                                     <div class="col-md-3 offset-5">
-                                        <input id="street_create" path="street" name="street" type="text" placeholder="street" class="form-control input-md" th:value="${userk.street}"/>
+                                        <input id="street_create" path="street" name="street" type="text" placeholder="street" class="form-control input-md" />
+<!--                                        th:value="${userk.street}"-->
                                     </div>
                                 </div>
 
@@ -472,7 +449,8 @@
                                 <div class="form-group">
                                     <strong><label class="mx-auto" style="float:right; width:50%;" for="age_create">Age</label></strong>
                                     <div class="col-md-3 offset-5">
-                                        <input id="age_create" path="age" name="age" min="0" max="110" step="1" type="number" placeholder="age" class="form-control input-md" th:value="${userk.age}"/>
+                                        <input id="age_create" path="age" name="age" min="0" max="110" step="1" type="number" placeholder="age" class="form-control input-md" />
+<!--                                        th:value="${userk.age}"-->
                                     </div>
                                 </div>
 
@@ -481,7 +459,8 @@
                                 <div class="form-group">
                                     <strong><label class="mx-auto" style="float:right; width:50%;" for="passwordk">Password</label></strong>
                                     <div class="col-md-3 offset-5">
-                                        <input id="passwordk" path="password" name="password" type="password" placeholder="password" class="form-control input-md" th:value="${userk.password}"/>
+                                        <input id="passwordk" path="password" name="password" type="password" placeholder="password" class="form-control input-md"/>
+<!--                                        th:value="${userk.password}"-->
                                     </div>
                                 </div>
 
@@ -497,7 +476,8 @@
                                 <div class="col-md-3 offset-5">
                                     <label class="mx-auto" for="createUsers"></label>
                                     <div class="btn-sm">
-                                        <button type="submit" class="btn btn-success btn-lg btn-sm" id="createUsers" data-target="#menu1" th:attrappend="data-target=${userk.id}">Add new user</button>
+                                        <button type="submit" class="btn btn-success btn-lg btn-sm" id="createUsers" data-target="#menu1" >Add new user</button>
+<!--                                        th:attrappend="data-target=${userk.id}"-->
                                     </div>
                                 </div>
                             </div>
@@ -506,7 +486,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="userss" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+        <div class="divForUsers tab-pane fade" id="userss" role="tabpanel" aria-labelledby="v-pills-profile-tab">
             <h2 >User information-page</h2>
             <div class="tab-content">
                 <div id="ded" class="container tab-pane active" ><br>
@@ -514,7 +494,7 @@
                         <strong><div class="card-header" style="width: 100%">About user</div></strong>
                         <div class="card-body">
                             <div class="container" style="margin-left: 0%; width:100%">
-                                <table class="table table-striped" style="width: 100%">
+                                <table class="userpage table table-striped" style="width: 100%">
                                     <thead>
                                     <tr>
                                         <th>Id</th>
@@ -525,15 +505,6 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="usert : ${enter}">
-                                        <td th:text="${usert.id}"></td>
-                                        <td th:text="${usert.name}"></td>
-                                        <td th:text="${usert.street}"></td>
-                                        <td th:text="${usert.age}"></td>
-                                        <td th:text="${usert.role.get(0).name}"></td>
-                                        <td>
-                                        </td>
-                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
