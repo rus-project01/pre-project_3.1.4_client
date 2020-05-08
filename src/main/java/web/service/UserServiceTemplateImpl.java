@@ -27,7 +27,7 @@ public class UserServiceTemplateImpl implements UserServiceTemplate {
     }
 
     @Override
-    public User findUserk(String s) {
+    public User findUserByName(String s) {
         ResponseEntity<User> obj = restTemplate.getForEntity("http://localhost:8081/admin/userFindByName/" + s, User.class);
         return obj.getBody();
     }
@@ -51,6 +51,12 @@ public class UserServiceTemplateImpl implements UserServiceTemplate {
     @Override
     public void updateUser(User user) {
         restTemplate.postForObject("http://localhost:8081/admin/editInUsers", user, User.class);
+    }
+
+    @Override
+    public User findUser(User user) {
+        ResponseEntity<User> obj = restTemplate.postForEntity("http://localhost:8081/admin/userFindToUs/", user, User.class);
+        return obj.getBody();
     }
 
 }

@@ -20,7 +20,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        User user = userServiceTemplate.findUserk(s);
+        User user = userServiceTemplate.findUserByName(s);
         List<Role> role = new ArrayList<>();
         role.add(userServiceTemplate.findRole(s));
         user.setRole(role);

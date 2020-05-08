@@ -9,9 +9,10 @@ import java.util.List;
 
 public interface UserServiceTemplate {
     List<User> getUser();
-    User findUserk(String s);
+    User findUserByName(String s);
     void addUs(User user);
     Role findRole(String s);
     void deleteUser(User user);
     void updateUser(User user);
+    User findUser(User user);
 }
