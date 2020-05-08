@@ -3,6 +3,9 @@ package web.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.*;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -13,13 +16,10 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 @Service
-public class UserServiceTemplateImpl implements UserServiceTemplate {
+public class UserServiceTemplateImpl implements UserServiceTemplate, UserDetailsService {
 
+    @Autowired
     RestTemplate restTemplate;
-
-    public UserServiceTemplateImpl(RestTemplateBuilder restTemplateBuilder) {
-        restTemplate = restTemplateBuilder.basicAuthentication("ADMIN", "ADMIN").build();
-    }
 
     @Override
     public List<User> getUser() {
@@ -57,6 +57,18 @@ public class UserServiceTemplateImpl implements UserServiceTemplate {
     public User findUser(User user) {
         ResponseEntity<User> obj = restTemplate.postForEntity("http://localhost:8081/admin/userFindToUs/", user, User.class);
         return obj.getBody();
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        User user = findUserByName(s);
+        List<Role> role = new ArrayList<>();
+        role.add(findRole(s));
+        user.setRole(role);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
+        return user;
     }
 
 }

@@ -20,7 +20,7 @@ import web.config.handler.LoginSuccessHandler;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    @Qualifier("userDetailServiceImpl")
+    @Qualifier("userServiceTemplateImpl")
     UserDetailsService userService;
 
     @Bean
